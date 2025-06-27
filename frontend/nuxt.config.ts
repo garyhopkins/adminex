@@ -4,11 +4,20 @@ export default defineNuxtConfig({
     typeCheck: true
   },
 
+  nitro: {
+    routeRules: {
+        '/api/**': {
+            proxy: {
+                to: 'http://localhost:8888/api/**' // make sure this is an ENV driven variable if production does not match
+            }
+        }
+    }
+},
   compatibilityDate: '2025-05-15',
   devtools: { enabled: true },
   ssr: false,
   ui: {
-	colorMode: false,
+	  colorMode: false,
   },
 
   modules: [
