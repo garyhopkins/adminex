@@ -29,5 +29,6 @@ func TestHandler(ctx context.Context, input *TestHandlerInput) (*TestHandlerOutp
 	response := &TestHandlerOutput{}
 	response.Body.Status = "ok"
 	response.Body.Time = time.Now()
+	// app.GetApp().EntClient.Model.Query().All(ctx)
 	return response, nil
 }

@@ -28,7 +28,8 @@ func setupApp() {
 }
 
 func NewTestDbClient() *entgen.Client {
-	client, err := entgen.Open("sqlite3", "file:ent?mode=memory&cache=shared&_fk=1")
+	// client, err := entgen.Open("sqlite3", "file:ent?mode=memory&cache=shared&_fk=1")
+	client, err := entgen.Open("sqlite3", "file:sqlite.db?cache=shared&_fk=1")
 	if err != nil {
 		log.Fatalf("failed opening connection to sqlite: %v", err)
 	}
