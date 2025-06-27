@@ -6,6 +6,7 @@ import (
 
 	"github.com/danielgtaylor/huma/v2"
 	"github.com/danielgtaylor/huma/v2/adapters/humaecho"
+	"github.com/garyhopkins/adminex/api/handlers"
 	"github.com/labstack/echo/v4"
 )
 
@@ -41,7 +42,10 @@ func New() *Api {
 	return a
 }
 
-func SetupHandlers(api huma.API) {}
+func SetupHandlers(a huma.API) {
+	huma.Register(a, handlers.OpTestHandler, handlers.TestHandler)
+
+}
 
 func (a *Api) ListenAndServe(addr string) error {
 	log.Printf("Listening on %s", addr)
