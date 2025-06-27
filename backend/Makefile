@@ -3,3 +3,7 @@ air:
 
 live:
 	go run github.com/air-verse/air@latest -c .air.toml
+
+generate:
+	rm -rf repository/ent/entgen/
+	go generate ./...
