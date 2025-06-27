@@ -8,6 +8,7 @@ import (
 	"github.com/danielgtaylor/huma/v2/adapters/humaecho"
 	"github.com/garyhopkins/adminex/api/handlers"
 	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 )
 
 const ApiDomain = "localhost"
@@ -30,6 +31,7 @@ func New() *Api {
 		{URL: baseUrl},
 	}
 
+	SetupEchoMiddleware(router)
 	api := humaecho.NewWithGroup(router, group, config)
 
 	a := &Api{
@@ -40,6 +42,13 @@ func New() *Api {
 	SetupHandlers(api)
 
 	return a
+}
+
+func SetupEchoMiddleware(e *echo.Echo) {
+	e.Use(middleware.Recover())
+	e.Use(middleware.RequestID())
+	e.Use(middleware.Logger())
+	//e.Use(middleware.CORSWithConfig(middleware.CORSConfig{}))
 }
 
 func SetupHandlers(a huma.API) {
