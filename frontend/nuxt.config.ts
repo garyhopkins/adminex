@@ -1,11 +1,15 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  typescript: {
+    typeCheck: true
+  },
+
   compatibilityDate: '2025-05-15',
   devtools: { enabled: true },
   ssr: false,
   ui: {
 	colorMode: false,
-  }
+  },
 
   modules: [
     '@nuxt/eslint',
